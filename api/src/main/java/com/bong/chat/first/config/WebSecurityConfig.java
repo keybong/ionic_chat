@@ -1,15 +1,22 @@
 package com.bong.chat.first.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.SecurityBuilder;
+import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 
 @Configuration
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig implements WebSecurityConfigurer {
+
     @Override
-    protected void configure(final HttpSecurity http) throws Exception {
-        // This is not for websocket authorization, and this should most likely not be altered.
-        http
-                .authorizeRequests().antMatchers("/chat-websocket").permitAll();
+    public void configure(SecurityBuilder arg0) throws Exception {
+        
     }
+
+    @Override
+    public void init(SecurityBuilder arg0) throws Exception {
+
+    }
+
+    
+
 }

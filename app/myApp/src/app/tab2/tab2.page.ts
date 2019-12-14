@@ -30,9 +30,10 @@ export class Tab2Page {
     private stompClient: any;
     private connect(): void {
         console.log(SockJS);
-        this.socket = new SockJS('http://localhost:8080/chat-websocket',null, {headers: {'Access-Control-Allow-Origin': '*'} });
-        this.stompClient = Stomp.over(this.socket);
-        this.stompClient.connect({}, (frame) => {
+        var socket = new SockJS('http://localhost:8080/chat-websocket', null, {headers: {'Access-Control-Allow-Origin': '*'}});
+        this.stompClient = Stomp.over(socket);
+        this.stompClient.connect({}, function (frame) {
+            alert("연결됬다!!!!");
             console.log('Connected: ' + frame);
             this.stompClient.subscribe(`/topic/greetings`, (greeting) => {
                 console.log(greeting);
