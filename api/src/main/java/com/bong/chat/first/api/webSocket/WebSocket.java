@@ -13,8 +13,7 @@ public class WebSocket {
     @MessageMapping("/send")
     @SendTo("/topic/greetings")
     public String greeting(String message) throws Exception {
-        log.info(message);
-        return "Hellow!!";
+        return message;
     }
 
 }
